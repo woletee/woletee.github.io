@@ -15,7 +15,7 @@
 <img src="/Images/Admin second page.PNG" alt="Projects" title="Optional title attribute" width="200"/>
 <img src="/Images/Add book.PNG" alt="Projects" title="Optional title attribute" width="200"/>
 <img src="/Images/View book.PNG" alt="Projects" title="Optional title attribute" width="200"/>
-<img src="/Images/view book page.PNG" alt="Projects" title="Optional title attribute" width="200"/>
+<img src="/Images/View book page.PNG" alt="Projects" title="Optional title attribute" width="200"/>
 <img src="/Images/Update Book.PNG" alt="Projects" title="Optional title attribute" width="200"/>
 <img src="/Images/Homepage.PNG" alt="Projects" title="Optional title attribute" width="200"/>
 
