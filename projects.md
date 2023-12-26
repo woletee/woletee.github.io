@@ -9,7 +9,7 @@
 
 2) Library Management System
 <img src="/Images/user registration.PNG" alt="Projects" title="Optional title attribute" width="200"/>
-<img src="/Images/user log in page.PNG" alt="Projects" title="Optional title attribute" width="200"/>
+<img src="/Images/User log in page.PNG" alt="Projects" title="Optional title attribute" width="200"/>
 <img src="/Images/Delete Book.PNG" alt="Projects" title="Optional title attribute" width="200"/>
 <img src="/Images/Adminfirstpage.PNG" alt="Projects" title="Optional title attribute" width="200"/>
 <img src="/Images/Admin second page.PNG" alt="Projects" title="Optional title attribute" width="200"/>
