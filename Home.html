@@ -115,21 +115,29 @@
 <body>
     <div id="wordContainer"></div>
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-   const word = "Artificial Intelligence Researcher";
-
+ document.addEventListener("DOMContentLoaded", function() {
+    const words = ["He", "World"];
     const container = document.getElementById("wordContainer");
-    let index = 0;
+    let wordIndex = 0;
+    let letterIndex = 0;
 
     function displayLetter() {
-        if (index < word.length) {
-            container.textContent += word[index++];
-            setTimeout(displayLetter, 100); // Adjust the timing as needed
+        if (wordIndex < words.length) {
+            if (letterIndex < words[wordIndex].length) {
+                container.textContent += words[wordIndex][letterIndex++];
+                setTimeout(displayLetter, 100); // Adjust the timing as needed
+            } else {
+                container.textContent += ' '; // Adds a space between words
+                wordIndex++;
+                letterIndex = 0;
+                setTimeout(displayLetter, 500); // Delay before next word
+            }
         }
     }
 
     displayLetter();
 });
+ 
   
     </script>
 </body>
