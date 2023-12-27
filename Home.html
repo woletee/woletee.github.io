@@ -94,7 +94,36 @@
 
   <h1 class="greeting">Hi there! <span class="wave">👋</span></h1></div>
   <h1 class="greeting">   I'm W.Maryam LIYEW<span class="wave"></span></h1>
+  <div id="wordContainer"></div>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const words = ["Artificial Intelligence Researcher at GIST", "Web developer","Content Creator"];
+    const container = document.getElementById("wordContainer");
+    let wordIndex = 0;
+    let letterIndex = 0;
 
+    function displayLetter() {
+        if (wordIndex < words.length) {
+            if (letterIndex === 0) {
+                container.appendChild(document.createElement('span')); // New span for each word
+            }
+            if (letterIndex < words[wordIndex].length) {
+                container.lastChild.textContent += words[wordIndex][letterIndex++];
+                setTimeout(displayLetter, 100); // Adjust the timing as needed
+            } else {
+                wordIndex++;
+                letterIndex = 0;
+                setTimeout(displayLetter, 500); // Delay before next word
+            }
+        }
+    }
+
+    displayLetter();
+});
+
+  
+    </script>
+  
 
 
   
@@ -163,35 +192,6 @@ body, html {
     </style>
 </head>
 <body>
-    <div id="wordContainer"></div>
-    <script>
-document.addEventListener("DOMContentLoaded", function() {
-    const words = ["Artificial Intelligence Researcher at GIST", "Web developer","Content Creator"];
-    const container = document.getElementById("wordContainer");
-    let wordIndex = 0;
-    let letterIndex = 0;
-
-    function displayLetter() {
-        if (wordIndex < words.length) {
-            if (letterIndex === 0) {
-                container.appendChild(document.createElement('span')); // New span for each word
-            }
-            if (letterIndex < words[wordIndex].length) {
-                container.lastChild.textContent += words[wordIndex][letterIndex++];
-                setTimeout(displayLetter, 100); // Adjust the timing as needed
-            } else {
-                wordIndex++;
-                letterIndex = 0;
-                setTimeout(displayLetter, 500); // Delay before next word
-            }
-        }
-    }
-
-    displayLetter();
-});
-
-  
-    </script>
   
 
 
