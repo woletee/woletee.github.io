@@ -95,6 +95,51 @@
     <img src="/Images/Capture.PNG" alt="Projects" title="Optional title attribute" width="400"/>
   <h1 class="greeting">Hi there! <span class="wave">👋</span></h1></div>
   <h1 class="greeting">   I'm W.Maryam LIYEW<span class="wave"></span></h1>
+
+
+
+  
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter by Letter Display</title>
+    <style>
+        #wordContainer {
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="wordContainer"></div>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const word = "Hello, World!";
+    const container = document.getElementById("wordContainer");
+    let index = 0;
+
+    function displayLetter() {
+        if (index < word.length) {
+            container.textContent += word[index++];
+            setTimeout(displayLetter, 100); // Adjust the timing as needed
+        }
+    }
+
+    displayLetter();
+});
+  
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+  
 </div>
 
 <!-- Additional sections for About, Projects, Resume, and Blogs would go here -->
