@@ -110,24 +110,33 @@
             font-size: 24px;
             font-family: Arial, sans-serif;
         }
+      #wordContainer {
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+    display: flex; /* Aligns children spans horizontally */
+    flex-direction: column; /* Stacks children spans vertically */
+}
+
     </style>
 </head>
 <body>
     <div id="wordContainer"></div>
     <script>
- document.addEventListener("DOMContentLoaded", function() {
-    const words = ["He", "World"];
+document.addEventListener("DOMContentLoaded", function() {
+    const words = ["Artificial Intelligence Researcher at GIST", "Web developer","Content Creator"];
     const container = document.getElementById("wordContainer");
     let wordIndex = 0;
     let letterIndex = 0;
 
     function displayLetter() {
         if (wordIndex < words.length) {
+            if (letterIndex === 0) {
+                container.appendChild(document.createElement('span')); // New span for each word
+            }
             if (letterIndex < words[wordIndex].length) {
-                container.textContent += words[wordIndex][letterIndex++];
+                container.lastChild.textContent += words[wordIndex][letterIndex++];
                 setTimeout(displayLetter, 100); // Adjust the timing as needed
             } else {
-                container.textContent += ' '; // Adds a space between words
                 wordIndex++;
                 letterIndex = 0;
                 setTimeout(displayLetter, 500); // Delay before next word
@@ -137,7 +146,7 @@
 
     displayLetter();
 });
- 
+
   
     </script>
 </body>
