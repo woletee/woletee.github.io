@@ -9,16 +9,12 @@
 <style>
   body {
     font-family: 'Arial', sans-serif;
- 
     color: white;
     margin: 0;
     padding: 0;
     background-image: url('https://th.bing.com/th/id/OIP.CDFwWuwNv27fcHTIa4H1tgHaE7?w=252&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7'); /* Replace with your image URL */
     background-size: cover; /* This will make sure your image covers the whole page */
     background-repeat: no-repeat; /* This will prevent the image from repeating */
-    background-size: cover;
-    background-repeat: no-repeat;
-   
   }
   .navbar {
     display: flex;
@@ -26,106 +22,29 @@
     padding: 1em;
     background-color: #333;
   }
-  .navbar a {
+  /* ... other styles ... */
+  .about-me {
     color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    border: 2px solid transparent;
-  }
-  .navbar a:hover {
-    color: #f0f0f0;
-    text-decoration: underline;
-    text-decoration-color: #ff00ff;
-    border-color: #ff00ff;
-  }
-  .header {
-    display: flex;
-    align-items: center;
     padding: 2em;
-    text-align: left; /* Align text to the left */
-  }
-  .header img {
-    max-width: 100px; /* Adjust the size as needed */
-    margin-right: 20px; /* Space between image and text */
-  }
-  .header .greeting {
-    margin-right: auto; /* Push everything else to the right */
-  }
-  .header h1 {
-    font-size: 2.5em;
-    transition: transform 0.3s ease;
-  }
-  .header h1:hover {
-    transform: scale(1.1);
-  }
-  .cta {
-    text-decoration: none;
-    background-color: purple;
-    color: white;
-    padding: 1em 2em;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  .cta:hover {
-    background-color: #6f42c1;
-  }
-  .footer {
     text-align: center;
-    padding: 1em;
-    background-color: #333;
   }
-
-</style>
-</head>
-<body>
-<div class="navbar">
-  <a href="Home.html"><i class="fas fa-home"></i>home</a>
-  <a href="About.html"><i class="fas fa-user"></i>About</a>
-  <a href="projects.html"><i class="fas fa-briefcase"></i>Projects</a>
-  <a href="https://github.com/woletee" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-  <a href="Cv.pdf" target="_blank"><i class="fas fa-file-alt"></i>Resume</a>
-  <a href="Blogs.html"><i class="fas fa-blog"></i>Blogs</a>
-</div>
-
-<div class="header" id="home">
-  
- 
-<!-- Additional sections for About, Projects, Resume, and Blogs would go here -->
-<style>
-
   .container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
   }
-  .skill {
-    border: 1px solid #5d5d81;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-  }
-  .icon {
-    font-size: 2rem; /* Placeholder size for icons */
-    margin-bottom: 8px;
-  }
-  h1 {
-    grid-column: 1 / -1;
-    color: #d3d3f8;
-    text-align: center;
-  }
+  /* ... other styles ... */
 </style>
 </head>
+<body>
+<div class="navbar">
+  <!-- Navigation links... -->
+</div>
 
-<div class="container">
-  <div class="about-me" style="color: white; padding: 2em; text-align: center;">
+<div class="about-me">
   <h2>A little about ME</h2>
   <p>Hello there Liyew here. Born and raised in Addis Ababa, Ethiopia.<br>
-  I'm an Artificial Intelligence Master's student at Gwangju Institute of Sciense and Technology(GIST), South Korea.</p>
+  I'm an Artificial Intelligence Master's student at Gwangju Institute of Science and Technology (GIST), South Korea.</p>
   
   <p>Apart from coding, what do I enjoy?</p>
   <ul>
@@ -139,45 +58,16 @@
     — Silvia, 12th July, 2022
   </blockquote>
 </div>
+
+<div class="container">
   <h1>Professional Skillset</h1>
-  
-  <div class="skill">
-    <div class="icon">🌐</div> <!-- Placeholder icon for AWS -->
-    AWS
-  </div>
-  <div class="skill">
-    <div class="icon">🔤</div> <!-- Placeholder icon for JS -->
-    JS
-  </div>
-  <div class="skill">
-    <div class="icon">🟢</div> <!-- Placeholder icon for Node.js -->
-    Node.js
-  </div>
-  <div class="skill">
-    <div class="icon">⚛️</div> <!-- Placeholder icon for React -->
-    React
-  </div>
-  <div class="skill">
-    <div class="icon">🔥</div> <!-- Placeholder icon for Flask -->
-    Flask
-  </div>
-  <div class="skill">
-    <div class="icon">🔗</div> <!-- Placeholder icon for GraphQL -->
-    GraphQL
-  </div>
-  <div class="skill">
-    <div class="icon">🐍</div> <!-- Placeholder icon for Django -->
-    Django
-  </div>
-  <div class="skill">
-    <div class="icon">🐍</div> <!-- Placeholder icon for Python -->
-    Python
-  </div>
-  <!-- Add other skills with icons here -->
+  <!-- Skills list... -->
+</div>
+
+<!-- You can include your image here within a div if needed -->
+<div class="project-image">
+  <img src="/Images/myimage.jpg" alt="Projects" title="Optional title attribute" width="400"/>
 </div>
 
 </body>
 </html>
-
-</html>
-    <img src="/Images/myimage.jpg" alt="Projects" title="Optional title attribute" width="400"/>
