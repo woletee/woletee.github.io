@@ -13,16 +13,16 @@
     color: white;
     margin: 0;
     padding: 0;
-    background-image: url('https://th.bing.com/th/id/OIP.CDFwWuwNv27fcHTIa4H1tgHaE7?w=252&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7'); /* Replace with your image URL */
-    background-size: cover; /* This will make sure your image covers the whole page */
-    background-repeat: no-repeat; /* This will prevent the image from repeating */
+    background-image: url('https://th.bing.com/th/id/OIP.CDFwWuwNv27fcHTIa4H1tgHaE7?w=252&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
     background-size: cover;
     background-repeat: no-repeat;
    
   }
   .navbar {
     display: flex;
-    justify-content: flex-end; /* Align nav items to the right */
+    justify-content: flex-end; 
     padding: 1em;
     background-color: #333;
   }
@@ -44,14 +44,14 @@
     display: flex;
     align-items: center;
     padding: 2em;
-    text-align: left; /* Align text to the left */
+    text-align: left; 
   }
   .header img {
-    max-width: 100px; /* Adjust the size as needed */
-    margin-right: 20px; /* Space between image and text */
+    max-width: 100px; 
+    margin-right: 20px; 
   }
   .header .greeting {
-    margin-right: auto; /* Push everything else to the right */
+    margin-right: auto; 
   }
   .header h1 {
     font-size: 2.5em;
@@ -108,11 +108,11 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             if (letterIndex < words[wordIndex].length) {
                 container.lastChild.textContent += words[wordIndex][letterIndex++];
-                setTimeout(displayLetter, 100); // Adjust the timing as needed
+                setTimeout(displayLetter, 100); 
             } else {
                 wordIndex++;
                 letterIndex = 0;
-                setTimeout(displayLetter, 500); // Delay before next word
+                setTimeout(displayLetter, 500); 
             }
         }
     }
@@ -144,8 +144,8 @@ document.addEventListener("DOMContentLoaded", function() {
       #wordContainer {
     font-size: 24px;
     font-family: Arial, sans-serif;
-    display: flex; /* Aligns children spans horizontally */
-    flex-direction: column; /* Stacks children spans vertically */
+    display: flex; 
+    flex-direction: column; 
 }
 body, html {
   height: 100%;
@@ -206,13 +206,13 @@ body, html {
       <a href="https://github.com/woletee" target="_blank" class="icon">
         <img src="/Images/giti.png" alt="GitHub">
       </a>
-      <a href="https://twitter.com/woletee" target="_blank" class="icon"> <!-- Assuming this is your Twitter link -->
+      <a href="https://twitter.com/woletee" target="_blank" class="icon">
         <img src="/Images/ic3.png" alt="Twitter">
       </a>
-      <a href="https://linkedin.com/in/woletee" target="_blank" class="icon"> <!-- Assuming this is your LinkedIn link -->
+      <a href="https://linkedin.com/in/woletee" target="_blank" class="icon"> 
         <img src="/Images/ic4.png" alt="LinkedIn">
       </a>
-      <a href="https://instagram.com/woletee" target="_blank" class="icon"> <!-- Assuming this is your Instagram link -->
+      <a href="https://instagram.com/woletee" target="_blank" class="icon"> 
         <img src="/Images/ic5.png" alt="Instagram">
       </a>
     </div>
