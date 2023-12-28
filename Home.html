@@ -92,7 +92,7 @@
 <div class="header" id="home">
  <img src="/Images/im1.png" alt="Projects" title="Optional title attribute" style="order: 2; margin-left: 80px; max-width: 400px;" />
 
-  <h1 class="greeting">Hi there! <span class="wave">👋</span></h1></div>
+  <h1 class="greeting">Hi there! <span class="wave">👋</span></h1>
   <h1 class="greeting">   I'm W.Maryam LIYEW<span class="wave"></span></h1>
   <div id="wordContainer"></div>
     <script>
@@ -101,8 +101,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const container = document.getElementById("wordContainer");
     let wordIndex = 0;
     let letterIndex = 0;
-
-    function displayLetter() {
+   function displayLetter() {
         if (wordIndex < words.length) {
             if (letterIndex === 0) {
                 container.appendChild(document.createElement('span')); // New span for each word
@@ -117,12 +116,16 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     }
-
     displayLetter();
 });
 
   
     </script>
+</div>
+
+
+ 
+
   
 
 
