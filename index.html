@@ -90,11 +90,143 @@
 </div>
 
 <div class="header" id="home">
-  
- 
-    <img src="/Images/Capture.PNG" alt="Projects" title="Optional title attribute" width="400"/>
+ <img src="/Images/im1.png" alt="Projects" title="Optional title attribute" style="order: 2; margin-left: 80px; max-width: 400px;" />
+
   <h1 class="greeting">Hi there! <span class="wave">👋</span></h1></div>
   <h1 class="greeting">   I'm W.Maryam LIYEW<span class="wave"></span></h1>
+  <div id="wordContainer"></div>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const words = ["Artificial Intelligence Researcher at GIST", "Web developer","Content Creator"];
+    const container = document.getElementById("wordContainer");
+    let wordIndex = 0;
+    let letterIndex = 0;
+
+    function displayLetter() {
+        if (wordIndex < words.length) {
+            if (letterIndex === 0) {
+                container.appendChild(document.createElement('span')); // New span for each word
+            }
+            if (letterIndex < words[wordIndex].length) {
+                container.lastChild.textContent += words[wordIndex][letterIndex++];
+                setTimeout(displayLetter, 100); // Adjust the timing as needed
+            } else {
+                wordIndex++;
+                letterIndex = 0;
+                setTimeout(displayLetter, 500); // Delay before next word
+            }
+        }
+    }
+
+    displayLetter();
+});
+
+  
+    </script>
+  
+
+
+  
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter by Letter Display</title>
+    <style>
+        #wordContainer {
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+        }
+      #wordContainer {
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+    display: flex; /* Aligns children spans horizontally */
+    flex-direction: column; /* Stacks children spans vertically */
+}
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.social-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #2c2f33;
+  color: white;
+}
+
+.footer-content {
+  text-align: center;
+}
+
+.connect {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.social-icons {
+  margin-top: 20px;
+}
+
+.icon img {
+  height: 40px; /* Adjust as necessary */
+  width: 40px; /* Adjust as necessary */
+  margin: 0 10px;
+}
+
+.icon {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.icon:hover {
+  opacity: 0.7;
+}
+
+    </style>
+</head>
+<body>
+  
+
+
+<div class="social-footer">
+  <div class="footer-content">
+    <p class="connect">FIND ME ON</p>
+    <p>Feel free to connect with me</p>
+    <div class="social-icons">
+      <a href="https://github.com/woletee" target="_blank" class="icon">
+        <img src="/Images/giti.png" alt="GitHub">
+      </a>
+      <a href="https://twitter.com/woletee" target="_blank" class="icon"> <!-- Assuming this is your Twitter link -->
+        <img src="/Images/ic3.png" alt="Twitter">
+      </a>
+      <a href="https://linkedin.com/in/woletee" target="_blank" class="icon"> <!-- Assuming this is your LinkedIn link -->
+        <img src="/Images/ic4.png" alt="LinkedIn">
+      </a>
+      <a href="https://instagram.com/woletee" target="_blank" class="icon"> <!-- Assuming this is your Instagram link -->
+        <img src="/Images/ic5.png" alt="Instagram">
+      </a>
+    </div>
+  </div>
+</div>
+
+
+  
+
+</body>
+</html>
+
+
+
+
+
+  
 </div>
 
 <!-- Additional sections for About, Projects, Resume, and Blogs would go here -->
