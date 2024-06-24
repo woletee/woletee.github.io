@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio</title>
+<title>Publications</title>
 <!-- Include Font Awesome CDN for icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 <style>
@@ -80,32 +80,30 @@
   .content h1, .content p {
     margin: 0.5em 0;
   }
-  .projects {
+  .publications {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2em;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
   }
-  .project {
-    flex: 1 1 calc(45% - 2em);
-    max-width: calc(45% - 2em);
+  .publication {
     background-color: rgba(51, 51, 51, 0.8);
     padding: 1em;
     border-radius: 10px;
+    width: 80%;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  .project:hover {
+  .publication:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   }
-  .project img {
-    width: 100%;
-    margin: 10px 0;
-    cursor: pointer;
-    transition: transform 0.3s ease;
+  .publication a {
+    color: #ff00ff;
+    text-decoration: none;
+    transition: color 0.3s;
   }
-  .project img:hover {
-    transform: scale(1.1);
+  .publication a:hover {
+    color: #ffffff;
   }
 </style>
 </head>
@@ -116,54 +114,33 @@
   <a href="projects.html"><i class="fas fa-briefcase"></i> Projects</a>
   <a href="https://github.com/woletee" target="_blank"><i class="fab fa-github"></i> GitHub</a>
   <a href="Cv1.pdf" target="_blank"><i class="fas fa-file-alt"></i> Resume</a>
-  <a href="Publication.html" target="_blank"><i class="fas fa-book"></i>Publication</a>
-  
+  <a href="Publication.html" target="_blank"><i class="fas fa-book"></i> Publication</a>
   <a href="https://www.notion.so/Reinforcement-Learning-Sutton-and-Barto-4be04ae89d3f460f898af0eb8f528950"><i class="fas fa-blog"></i> Study</a>
 </div>
 
 <div class="header" id="home">
   <div class="greeting">
-    <h1>Welcome to My Portfolio</h1>
-    <p>Discover my projects and skills.</p>
-    <a href="#projects" class="cta">View Projects</a>
+    <h1>Welcome to My Publications</h1>
+    <p>Here are some of the papers I have published:</p>
   </div>
 </div>
 
-<div class="content" id="projects">
-  <h1>My Recent Work</h1>
-  <p>Here are some of the projects that I have worked on recently:</p>
-  
-  <div class="projects">
-    <div class="project">
-        <h2>Trip Recommendation System</h2>
-        <a href="https://github.com/woletee/TRIP_Recommendation" target="_blank">
-            <img src="/Images/Untitled (1).png" alt="Trip Recommendation System" title="Trip Recommendation System">
-        </a>
+<div class="content" id="publications">
+  <h1>My Publications</h1>
+  <div class="publications">
+    <div class="publication">
+      <h2>Paper Title 1</h2>
+      <p><a href="link_to_pdf1.pdf" target="_blank">Download PDF</a></p>
     </div>
-
-
-  <div class="project">
-      <h2>Korean Food Detection</h2>
-      <a href="https://github.com/woletee/korean_food_detection" target="_blank">
-        <img src="/Images/fodod.png" alt="Another Project" title="Korean Food Detection">
-      </a>
+    <div class="publication">
+      <h2>Paper Title 2</h2>
+      <p><a href="link_to_pdf2.pdf" target="_blank">Download PDF</a></p>
     </div>
-    <div class="project">
-      <h2>Hulu Bus Ticket Booking System</h2>
-      <a href="https://github.com/woletee/Simple-Bus-Ticket-Booking-System" target="_blank">
-        <img src="/Images/hulu1.PNG" alt="Hulu Bus Ticket Booking System" title="Hulu Bus Ticket Booking System">
-      </a>
+    <div class="publication">
+      <h2>Paper Title 3</h2>
+      <p><a href="link_to_pdf3.pdf" target="_blank">Download PDF</a></p>
     </div>
-
-    <div class="project">
-      <h2>Library Management System</h2>
-      <a href="https://github.com/woletee/Library-Management-System" target="_blank">
-        <img src="/Images/pro2.PNG" alt="Library Management System" title="Library Management System">
-      </a>
-    </div>
-
-
-  
+    <!-- Add more publications as needed -->
   </div>
 </div>
 
