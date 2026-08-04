@@ -1,0 +1,39 @@
+baseURL: "https://woletee.github.io/"
+languageCode: "en-us"
+title: "My Papers & Code"
+theme: ["PaperMod4"]
+
+params:
+  author: "Your Name"
+  description: "Notes about research papers and programming"
+  defaultTheme: auto
+  ShowReadingTime: true
+  ShowToc: true
+  ShowCodeCopyButtons: true
+  ShowPostNavLinks: true
+
+  homeInfoParams:
+    Title: "Papers, programming, and things I’m learning"
+    Content: "I explain research papers and share practical code examples."
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/YOUR-GITHUB-USERNAME"
+
+menu:
+  main:
+    - name: Posts
+      url: /
+      weight: 10
+    - name: Papers
+      url: /categories/papers/
+      weight: 20
+    - name: Programming
+      url: /categories/programming/
+      weight: 30
+    - name: Tags
+      url: /tags/
+      weight: 40
+    - name: About
+      url: /about/
+      weight: 50
