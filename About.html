@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    color: white;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://th.bing.com/th/id/OIP.CDFwWuwNv27fcHTIa4H1tgHaE7?w=252&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .navbar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1em;
+    background-color: #333;
+  }
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    border: 2px solid transparent;
+  }
+  .navbar a:hover {
+    color: #f0f0f0;
+    text-decoration: underline;
+    text-decoration-color: #ff00ff;
+    border-color: #ff00ff;
+  }
+  .content-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+    padding: 2em;
+    
+    border-radius: 10px;
+  }
+  .about-and-image {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .about-me {
+    flex: 1;
+    min-width: 300px;
+    color: white;
+    text-align: center;
+  }
+  .skills-list {
+    width: 100%;
+  }
+  .skill {
+    border: 1px solid #5d5d81;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+  }
+  .icon {
+    font-size: 2rem; 
+    margin-bottom: 8px;
+  }
+</style>
+</head>
+<body>
+<div class="navbar">
+  <a href="Home.html"><i class="fas fa-home"></i> Home</a>
+  <a href="About.html"><i class="fas fa-user"></i> About</a>
+  <a href="projects.html"><i class="fas fa-briefcase"></i> Projects</a>
+  <a href="https://github.com/woletee" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+  <a href="Cv1.pdf" target="_blank"><i class="fas fa-file-alt"></i> Resume</a>
+  <a href="Publication.html"><i class="fas fa-book"></i>Publication</a>
+  <a href="https://www.notion.so/Reinforcement-Learning-Sutton-and-Barto-4be04ae89d3f460f898af0eb8f528950"><i class="fas fa-blog"></i>Study</a>
+
+</div>
+
+<div class="content-row">
+  <div class="about-and-image">
+    <div class="about-me">
+      <h2 style="font-size: 2.5em; color: #FFFFFF; margin-bottom: 0.5em;">A little about ME</h2>
+      <p style="font-size: 1.2em; line-height: 1.6; color: #FFFFFF;">Hello there Liyew is here.<br></br> Born and raised in Addis Ababa, Ethiopia.<br>
+      I'm an Artificial Intelligence Master's student at Gwangju Institute of Science and Technology (GIST), South Korea.</p>
+      <p style="font-size: 1.4em; margin-top: 2em; color: #FFFFFF;">Apart from coding, what do I enjoy?</p>
+      <ul style="list-style-type: none; padding: 0;">
+        <li style="font-size: 1.2em; padding: 0.2em 0; color: #FFFFFF;">🎨 Sketching</li> 
+        <li style="font-size: 1.2em; padding: 0.2em 0; color: #FFFFFF;">✍️ Writing</li>
+        <li style="font-size: 1.2em; padding: 0.2em 0; color: #FFFFFF;">🌍 Travelling</li>
+        <li style="font-size: 1.2em; padding: 0.2em 0; color: #FFFFFF;">🏀 Playing Basketball</li>
+        
+      </ul>
+      <blockquote style="font-style: italic; margin: 2em 0; color: #DDA0DD;">
+        "What you need to learn isn't how to make everything easy; but what to do when something is hard"<br>
+        — Silvia, 12th July, 2022
+      </blockquote>
+    </div>
+    <div>
+      <img src="/Images/im3.png" alt="Projects" title="Optional title attribute" width="400"/>
+    </div>
+  </div>
+<div ">
+  <!-- Professional Skills Section -->
+<div>
+    <h1>Professional Skills Used</h1>
+    <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+        <div class="skill" style="display: flex; align-items: center;">
+            <div class="icon">🔤</div> JS
+        </div>
+        <div class="skill" style="display: flex; align-items: center;">
+            <div class="icon">🟢</div> Node.js
+        </div>
+        <div class="skill" style="display: flex; align-items: center;">
+            <div class="icon">⚛️</div> React
+        </div>
+        <div class="skill" style="display: flex; align-items: center;">
+            <div class="icon">🔥</div> PHP
+        </div>
+        <div class="skill" style="display: flex; align-items: center;">
+            <div class="icon">🔗</div> SQL
+        </div>
+        <div class="skill" style="display: flex; align-items: center;">
+            <div class="icon">🐍</div> Python
+        </div>
+        <div class="skill" style="display: flex; align-items: center;">
+            <div class="icon">🐍</div> Pytorch
+        </div>
+    </div>
+</div>
+
+
+  <!-- Tools Section -->
+  <div>
+    <h1>Tools I Used</h1>
+    <div class="skill">
+      <div class="icon">🔵</div> VS Code
+    </div>
+    <div class="skill">
+      <div class="icon">🔵</div> Postman
+    </div>
+     <div class="skill">
+      <div class="icon">🔵</div> Zeplin
+    </div>
+   
+  </div>
+
+
+  
+</div>
+
+</div>
+
+
+</body>
+</html>
+
+
