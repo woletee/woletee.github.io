@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 296" role="img"
+    aria-label="Sampling starts from pure static and repeats a three-part loop one thousand times: guess the noise, subtract a small slice of it, then sprinkle a little fresh noise back in. The last step skips the sprinkle and returns a clean image.">
+  <defs>
+    <clipPath id="sl-panel">
+      <rect x="0" y="0" width="92" height="92" rx="9" />
+    </clipPath>
+    <filter id="sl-grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="1.05" numOctaves="4" stitchTiles="stitch" seed="19" />
+      <feColorMatrix type="saturate" values="0" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0" intercept="1" />
+      </feComponentTransfer>
+    </filter>
+    <marker id="sl-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" />
+    </marker>
+  </defs>
+
+  <style>
+    .sl-box  { fill: var(--dg-panel); stroke: var(--dg-line); stroke-opacity: 0.4; }
+    .sl-title{ font: 600 12.5px ui-sans-serif, system-ui, sans-serif; fill: currentColor; }
+    .sl-cap  { font: 500 12px ui-sans-serif, system-ui, sans-serif; fill: currentColor; }
+    .sl-dim  { font: 400 11px ui-sans-serif, system-ui, sans-serif; fill: currentColor; fill-opacity: 0.62; }
+    .sl-flow { fill: none; stroke: currentColor; stroke-opacity: 0.55; stroke-width: 1.6; }
+    .sl-frame{ fill: none; stroke: var(--dg-line); stroke-opacity: 0.35; }
+  </style>
+
+  <!-- start: pure noise -->
+  <g transform="translate(16,88)">
+    <g clip-path="url(#sl-panel)">
+      <rect width="92" height="92" fill="var(--dg-panel)" />
+      <rect width="92" height="92" filter="url(#sl-grain)" />
+    </g>
+    <rect class="sl-frame" width="92" height="92" rx="9" />
+  </g>
+  <text class="sl-cap" x="62" y="198" text-anchor="middle">x<tspan font-size="9">T</tspan> ~ N(0, I)</text>
+  <text class="sl-dim" x="62" y="214" text-anchor="middle">free, from a random</text>
+  <text class="sl-dim" x="62" y="228" text-anchor="middle">number generator</text>
+
+  <line class="sl-flow" x1="112" y1="132" x2="142" y2="132" marker-end="url(#sl-arrow)" />
+
+  <!-- step 1 -->
+  <rect class="sl-box" x="150" y="98" width="140" height="68" rx="10" />
+  <text class="sl-title" x="220" y="124" text-anchor="middle">&#949;<tspan font-size="9">&#952;</tspan>(x<tspan font-size="9">t</tspan>, t)</text>
+  <text class="sl-dim" x="220" y="142" text-anchor="middle">guess all the noise</text>
+  <text class="sl-dim" x="220" y="156" text-anchor="middle">sitting in this image</text>
+
+  <line class="sl-flow" x1="292" y1="132" x2="314" y2="132" marker-end="url(#sl-arrow)" />
+
+  <!-- step 2 -->
+  <rect class="sl-box" x="320" y="98" width="140" height="68" rx="10" stroke="var(--dg-accent)" stroke-opacity="0.7" />
+  <text class="sl-title" x="390" y="124" text-anchor="middle" fill="var(--dg-accent)">subtract a slice</text>
+  <text class="sl-dim" x="390" y="142" text-anchor="middle">not all of it &#8212; just</text>
+  <text class="sl-dim" x="390" y="156" text-anchor="middle">one step&#8217;s worth</text>
+
+  <line class="sl-flow" x1="462" y1="132" x2="484" y2="132" marker-end="url(#sl-arrow)" />
+
+  <!-- step 3 -->
+  <rect class="sl-box" x="490" y="98" width="146" height="68" rx="10" stroke="var(--dg-warm)" stroke-opacity="0.7" />
+  <text class="sl-title" x="563" y="124" text-anchor="middle" fill="var(--dg-warm)">add a pinch back</text>
+  <text class="sl-dim" x="563" y="142" text-anchor="middle">fresh noise, smaller than</text>
+  <text class="sl-dim" x="563" y="156" text-anchor="middle">what you removed</text>
+
+  <!-- the loop -->
+  <path class="sl-flow" d="M 636 166 C 660 200, 650 226, 610 226 H 246 C 206 226, 196 200, 220 170" marker-end="url(#sl-arrow)" />
+  <text class="sl-dim" x="428" y="244" text-anchor="middle">t &#8592; t &#8722; 1, and around again &#8212; one thousand times in the original paper</text>
+
+  <!-- finish -->
+  <path class="sl-flow" d="M 636 118 C 660 100, 664 118, 686 132" marker-end="url(#sl-arrow)" />
+  <text class="sl-dim" x="668" y="92" text-anchor="middle">at t = 1</text>
+  <g transform="translate(692,88)">
+    <g clip-path="url(#sl-panel)">
+      <rect width="92" height="92" fill="var(--dg-panel)" />
+      <circle cx="28" cy="28" r="12" fill="var(--dg-warm)" />
+      <path d="M -6 76 L 26 40 L 48 64 L 64 46 L 98 76 Z" fill="var(--dg-accent)" />
+      <rect x="-2" y="74" width="96" height="20" fill="var(--dg-accent)" opacity="0.55" />
+    </g>
+    <rect class="sl-frame" width="92" height="92" rx="9" />
+  </g>
+  <text class="sl-cap" x="738" y="198" text-anchor="middle">x<tspan font-size="9">0</tspan></text>
+  <text class="sl-dim" x="738" y="214" text-anchor="middle">a brand-new image</text>
+</svg>

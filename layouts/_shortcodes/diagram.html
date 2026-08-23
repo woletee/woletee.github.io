@@ -1,0 +1,10 @@
+{{- $src := printf "diagrams/%s" (.Get "src" | default (.Get 0)) -}}
+{{- $caption := .Get "caption" -}}
+{{- with resources.Get $src -}}
+<figure class="diagram">
+    {{ .Content | safeHTML }}
+    {{- with $caption }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
+</figure>
+{{- else -}}
+    {{- errorf "shortcode diagram: could not find asset %q (called from %s)" $src $.Position -}}
+{{- end -}}

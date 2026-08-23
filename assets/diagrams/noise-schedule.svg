@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 310" role="img"
+    aria-label="Plot of how much original signal and how much noise are present at each timestep under DDPM's linear schedule. Signal falls from 1 to 0, noise rises from 0 to 1, and they cross at roughly t equals 255.">
+  <style>
+    .ns-ax   { stroke: currentColor; stroke-opacity: 0.35; stroke-width: 1; }
+    .ns-grid { stroke: currentColor; stroke-opacity: 0.12; stroke-width: 1; }
+    .ns-tick { font: 400 11px ui-monospace, SFMono-Regular, Menlo, monospace; fill: currentColor; fill-opacity: 0.6; }
+    .ns-name { font: 600 13px ui-sans-serif, system-ui, sans-serif; }
+    .ns-note { font: 400 12px ui-sans-serif, system-ui, sans-serif; fill: currentColor; fill-opacity: 0.72; }
+    .ns-axname { font: 500 12px ui-sans-serif, system-ui, sans-serif; fill: currentColor; fill-opacity: 0.7; }
+  </style>
+
+  <g class="ns-grid">
+    <line x1="70" y1="40" x2="700" y2="40" />
+    <line x1="70" y1="92.5" x2="700" y2="92.5" />
+    <line x1="70" y1="145" x2="700" y2="145" />
+    <line x1="70" y1="197.5" x2="700" y2="197.5" />
+  </g>
+
+  <line class="ns-ax" x1="70" y1="26" x2="70" y2="250" />
+  <line class="ns-ax" x1="70" y1="250" x2="710" y2="250" />
+
+  <g class="ns-tick" text-anchor="end">
+    <text x="60" y="44">1.0</text>
+    <text x="60" y="149">0.5</text>
+    <text x="60" y="254">0.0</text>
+  </g>
+  <text class="ns-axname" transform="rotate(-90 22 145)" x="22" y="145" text-anchor="middle">fraction of the mix</text>
+
+  <g class="ns-tick" text-anchor="middle">
+    <text x="70" y="270">0</text>
+    <text x="194" y="270">200</text>
+    <text x="318" y="270">400</text>
+    <text x="443" y="270">600</text>
+    <text x="567" y="270">800</text>
+    <text x="690" y="270">1000</text>
+  </g>
+  <text class="ns-axname" x="390" y="292" text-anchor="middle">timestep t &#8594;</text>
+
+  <line x1="228" y1="101" x2="228" y2="250" stroke="currentColor" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3 4" />
+  <circle cx="228" cy="101" r="3.5" fill="currentColor" fill-opacity="0.55" />
+  <text class="ns-note" x="243" y="90">t &#8776; 255: half signal, half noise</text>
+  <text class="ns-note" x="243" y="107">and it is downhill from there</text>
+
+  <polyline fill="none" stroke="var(--dg-warm)" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"
+    points="70.0,40.0 76.2,40.2 82.4,40.7 88.6,41.3 94.8,42.1 101.0,43.2 107.2,44.4 113.4,45.9 119.6,47.5 125.9,49.3 132.1,51.3 138.3,53.5 144.5,55.8 150.7,58.4 156.9,61.0 163.1,63.8 169.3,66.8 175.5,69.9 181.7,73.1 187.9,76.4 194.1,79.9 200.3,83.4 206.5,87.0 212.7,90.7 218.9,94.5 225.2,98.4 231.4,102.3 237.6,106.2 243.8,110.2 250.0,114.2 256.2,118.2 262.4,122.2 268.6,126.2 274.8,130.3 281.0,134.3 287.2,138.2 293.4,142.2 299.6,146.1 305.8,150.0 312.0,153.8 318.2,157.6 324.5,161.3 330.7,165.0 336.9,168.6 343.1,172.1 349.3,175.5 355.5,178.9 361.7,182.1 367.9,185.3 374.1,188.4 380.3,191.4 386.5,194.3 392.7,197.2 398.9,199.9 405.1,202.5 411.3,205.1 417.5,207.5 423.8,209.9 430.0,212.2 436.2,214.3 442.4,216.4 448.6,218.4 454.8,220.3 461.0,222.1 467.2,223.9 473.4,225.5 479.6,227.1 485.8,228.6 492.0,230.0 498.2,231.3 504.4,232.6 510.6,233.8 516.8,234.9 523.1,236.0 529.3,237.0 535.5,237.9 541.7,238.8 547.9,239.7 554.1,240.4 560.3,241.2 566.5,241.8 572.7,242.5 578.9,243.1 585.1,243.6 591.3,244.1 597.5,244.6 603.7,245.1 609.9,245.5 616.1,245.9 622.4,246.2 628.6,246.5 634.8,246.8 641.0,247.1 647.2,247.4 653.4,247.6 659.6,247.8 665.8,248.0 672.0,248.2 678.2,248.4 684.4,248.5 690.0,248.7" />
+
+  <polyline fill="none" stroke="var(--dg-accent)" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"
+    points="70.0,247.9 76.2,240.2 82.4,233.4 88.6,226.7 94.8,220.1 101.0,213.6 107.2,207.1 113.4,200.7 119.6,194.4 125.9,188.2 132.1,182.0 138.3,175.9 144.5,170.0 150.7,164.1 156.9,158.4 163.1,152.8 169.3,147.4 175.5,142.0 181.7,136.8 187.9,131.8 194.1,126.9 200.3,122.1 206.5,117.6 212.7,113.1 218.9,108.8 225.2,104.7 231.4,100.8 237.6,97.0 243.8,93.3 250.0,89.8 256.2,86.5 262.4,83.4 268.6,80.3 274.8,77.5 281.0,74.8 287.2,72.2 293.4,69.8 299.6,67.5 305.8,65.3 312.0,63.3 318.2,61.4 324.5,59.6 330.7,58.0 336.9,56.4 343.1,55.0 349.3,53.7 355.5,52.4 361.7,51.3 367.9,50.2 374.1,49.2 380.3,48.3 386.5,47.5 392.7,46.8 398.9,46.1 405.1,45.4 411.3,44.9 417.5,44.3 423.8,43.9 430.0,43.4 436.2,43.1 442.4,42.7 448.6,42.4 454.8,42.1 461.0,41.9 467.2,41.6 473.4,41.4 479.6,41.3 485.8,41.1 492.0,41.0 498.2,40.8 504.4,40.7 510.6,40.6 516.8,40.5 523.1,40.5 529.3,40.4 535.5,40.3 541.7,40.3 547.9,40.3 554.1,40.2 560.3,40.2 566.5,40.2 572.7,40.1 578.9,40.1 585.1,40.1 591.3,40.1 597.5,40.1 603.7,40.1 609.9,40.0 616.1,40.0 622.4,40.0 628.6,40.0 634.8,40.0 641.0,40.0 647.2,40.0 653.4,40.0 659.6,40.0 665.8,40.0 672.0,40.0 678.2,40.0 684.4,40.0 690.0,40.0" />
+
+  <text class="ns-name" x="470" y="34" fill="var(--dg-accent)">noise mixed in</text>
+  <text class="ns-name" x="470" y="240" fill="var(--dg-warm)">original image left</text>
+</svg>

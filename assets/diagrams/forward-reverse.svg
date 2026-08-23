@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 846 352" role="img"
+    aria-label="Top row: a picture is gradually turned into pure noise by adding small amounts of Gaussian noise. Bottom row: a neural network walks the same chain backwards, removing a little noise at each step.">
+  <defs>
+    <clipPath id="fr-panel">
+      <rect x="0" y="0" width="118" height="118" rx="10" />
+    </clipPath>
+    <filter id="fr-grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch" seed="7" />
+      <feColorMatrix type="saturate" values="0" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0" intercept="1" />
+      </feComponentTransfer>
+    </filter>
+    <marker id="fr-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" />
+    </marker>
+  </defs>
+
+  <style>
+    .fr-label { font: 500 14px ui-sans-serif, system-ui, sans-serif; fill: currentColor; }
+    .fr-t     { font: 600 11px ui-monospace, SFMono-Regular, Menlo, monospace; fill: currentColor; opacity: 0.6; }
+    .fr-head  { font: 700 13px ui-sans-serif, system-ui, sans-serif; letter-spacing: 0.02em; }
+    .fr-sub   { font: 400 12.5px ui-sans-serif, system-ui, sans-serif; }
+    .fr-frame { fill: none; stroke: var(--dg-line); stroke-opacity: 0.35; }
+  </style>
+
+  <!-- forward pass heading -->
+  <text class="fr-head" x="10" y="18" fill="var(--dg-warm)">FORWARD PROCESS &#8212; a fixed recipe, nothing is learned</text>
+  <text class="fr-sub" x="10" y="36" fill="currentColor" opacity="0.7">each step stirs in a little Gaussian noise</text>
+
+  <g stroke="var(--dg-warm)" stroke-width="1.6" marker-end="url(#fr-arrow)" color="var(--dg-warm)" fill="none">
+    <path d="M 165 78 C 181 62, 197 62, 213 76" />
+    <path d="M 327 78 C 343 62, 359 62, 375 76" />
+    <path d="M 489 78 C 505 62, 521 62, 537 76" />
+    <path d="M 651 78 C 667 62, 683 62, 699 76" />
+  </g>
+
+  <!-- the five snapshots -->
+  <g>
+    <g transform="translate(40,92)">
+      <g clip-path="url(#fr-panel)">
+        <rect width="118" height="118" fill="var(--dg-panel)" />
+        <g opacity="1">
+          <circle cx="36" cy="36" r="15" fill="var(--dg-warm)" />
+          <path d="M -6 96 L 34 50 L 62 82 L 82 60 L 124 96 Z" fill="var(--dg-accent)" />
+          <rect x="-2" y="94" width="122" height="26" fill="var(--dg-accent)" opacity="0.55" />
+        </g>
+      </g>
+      <rect class="fr-frame" width="118" height="118" rx="10" />
+    </g>
+
+    <g transform="translate(202,92)">
+      <g clip-path="url(#fr-panel)">
+        <rect width="118" height="118" fill="var(--dg-panel)" />
+        <g opacity="0.95">
+          <circle cx="36" cy="36" r="15" fill="var(--dg-warm)" />
+          <path d="M -6 96 L 34 50 L 62 82 L 82 60 L 124 96 Z" fill="var(--dg-accent)" />
+          <rect x="-2" y="94" width="122" height="26" fill="var(--dg-accent)" opacity="0.55" />
+        </g>
+        <rect width="118" height="118" filter="url(#fr-grain)" opacity="0.32" />
+      </g>
+      <rect class="fr-frame" width="118" height="118" rx="10" />
+    </g>
+
+    <g transform="translate(364,92)">
+      <g clip-path="url(#fr-panel)">
+        <rect width="118" height="118" fill="var(--dg-panel)" />
+        <g opacity="0.63">
+          <circle cx="36" cy="36" r="15" fill="var(--dg-warm)" />
+          <path d="M -6 96 L 34 50 L 62 82 L 82 60 L 124 96 Z" fill="var(--dg-accent)" />
+          <rect x="-2" y="94" width="122" height="26" fill="var(--dg-accent)" opacity="0.55" />
+        </g>
+        <rect width="118" height="118" filter="url(#fr-grain)" opacity="0.78" />
+      </g>
+      <rect class="fr-frame" width="118" height="118" rx="10" />
+    </g>
+
+    <g transform="translate(526,92)">
+      <g clip-path="url(#fr-panel)">
+        <rect width="118" height="118" fill="var(--dg-panel)" />
+        <g opacity="0.18">
+          <circle cx="36" cy="36" r="15" fill="var(--dg-warm)" />
+          <path d="M -6 96 L 34 50 L 62 82 L 82 60 L 124 96 Z" fill="var(--dg-accent)" />
+          <rect x="-2" y="94" width="122" height="26" fill="var(--dg-accent)" opacity="0.55" />
+        </g>
+        <rect width="118" height="118" filter="url(#fr-grain)" opacity="0.96" />
+      </g>
+      <rect class="fr-frame" width="118" height="118" rx="10" />
+    </g>
+
+    <g transform="translate(688,92)">
+      <g clip-path="url(#fr-panel)">
+        <rect width="118" height="118" fill="var(--dg-panel)" />
+        <rect width="118" height="118" filter="url(#fr-grain)" opacity="1" />
+      </g>
+      <rect class="fr-frame" width="118" height="118" rx="10" />
+    </g>
+  </g>
+
+  <!-- labels under each snapshot -->
+  <g text-anchor="middle">
+    <text class="fr-label" x="99" y="232">x<tspan class="fr-t" dy="3">0</tspan></text>
+    <text class="fr-t" x="99" y="250">the real photo</text>
+
+    <text class="fr-label" x="261" y="232">x<tspan class="fr-t" dy="3">100</tspan></text>
+    <text class="fr-t" x="261" y="250">still obvious</text>
+
+    <text class="fr-label" x="423" y="232">x<tspan class="fr-t" dy="3">300</tspan></text>
+    <text class="fr-t" x="423" y="250">barely there</text>
+
+    <text class="fr-label" x="585" y="232">x<tspan class="fr-t" dy="3">600</tspan></text>
+    <text class="fr-t" x="585" y="250">a hint of structure</text>
+
+    <text class="fr-label" x="747" y="232">x<tspan class="fr-t" dy="3">1000</tspan></text>
+    <text class="fr-t" x="747" y="250">pure static</text>
+  </g>
+
+  <!-- reverse pass -->
+  <g stroke="var(--dg-accent)" stroke-width="1.6" marker-end="url(#fr-arrow)" color="var(--dg-accent)" fill="none">
+    <path d="M 213 272 C 197 288, 181 288, 165 274" />
+    <path d="M 375 272 C 359 288, 343 288, 327 274" />
+    <path d="M 537 272 C 521 288, 505 288, 489 274" />
+    <path d="M 699 272 C 683 288, 667 288, 651 274" />
+  </g>
+
+  <text class="fr-head" x="10" y="326" fill="var(--dg-accent)">REVERSE PROCESS &#8212; this is the part we train</text>
+  <text class="fr-sub" x="10" y="344" fill="currentColor" opacity="0.7">a neural network guesses the noise that was added, and subtracts a little of it</text>
+</svg>

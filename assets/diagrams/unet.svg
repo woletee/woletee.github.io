@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 372" role="img"
+    aria-label="The U-Net used by DDPM: an encoder shrinks the noisy image while widening the channels, a bottleneck reasons about global layout, a decoder rebuilds full resolution, skip connections carry fine detail straight across, and the timestep embedding is injected into every block.">
+  <defs>
+    <clipPath id="un-io">
+      <rect x="0" y="0" width="72" height="72" rx="9" />
+    </clipPath>
+    <filter id="un-grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="4" stitchTiles="stitch" seed="11" />
+      <feColorMatrix type="saturate" values="0" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0" intercept="1" />
+      </feComponentTransfer>
+    </filter>
+    <marker id="un-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" />
+    </marker>
+  </defs>
+
+  <style>
+    .un-block { fill: var(--dg-accent-soft); stroke: var(--dg-accent); stroke-opacity: 0.55; stroke-width: 1.2; }
+    .un-bn    { fill: var(--dg-warm-soft); stroke: var(--dg-warm); stroke-opacity: 0.7; stroke-width: 1.2; }
+    .un-res   { font: 600 11px ui-monospace, SFMono-Regular, Menlo, monospace; fill: currentColor; }
+    .un-cap   { font: 500 12px ui-sans-serif, system-ui, sans-serif; fill: currentColor; }
+    .un-dim   { font: 400 11px ui-sans-serif, system-ui, sans-serif; fill: currentColor; fill-opacity: 0.62; }
+    .un-flow  { fill: none; stroke: currentColor; stroke-opacity: 0.55; stroke-width: 1.6; }
+    .un-skip  { fill: none; stroke: var(--dg-accent); stroke-opacity: 0.75; stroke-width: 1.4; stroke-dasharray: 6 4; }
+    .un-time  { fill: none; stroke: var(--dg-warm); stroke-opacity: 0.75; stroke-width: 1.3; stroke-dasharray: 4 4; }
+    .un-frame { fill: none; stroke: var(--dg-line); stroke-opacity: 0.35; }
+  </style>
+
+  <!-- input: noisy image -->
+  <g transform="translate(8,74)">
+    <g clip-path="url(#un-io)">
+      <rect width="72" height="72" fill="var(--dg-panel)" />
+      <g opacity="0.4">
+        <circle cx="22" cy="22" r="10" fill="var(--dg-warm)" />
+        <path d="M -6 60 L 20 32 L 38 50 L 50 36 L 78 60 Z" fill="var(--dg-accent)" />
+      </g>
+      <rect width="72" height="72" filter="url(#un-grain)" opacity="0.85" />
+    </g>
+    <rect class="un-frame" width="72" height="72" rx="9" />
+  </g>
+  <text class="un-cap" x="44" y="164" text-anchor="middle">x<tspan font-size="9">t</tspan></text>
+
+  <!-- encoder -->
+  <line class="un-flow" x1="84" y1="110" x2="102" y2="110" marker-end="url(#un-arrow)" />
+  <rect class="un-block" x="108" y="50" width="56" height="120" rx="8" />
+  <text class="un-res" x="136" y="114" text-anchor="middle">32&#178;</text>
+
+  <line class="un-flow" x1="164" y1="150" x2="192" y2="152" marker-end="url(#un-arrow)" />
+  <rect class="un-block" x="198" y="116" width="56" height="88" rx="8" />
+  <text class="un-res" x="226" y="164" text-anchor="middle">16&#178;</text>
+
+  <line class="un-flow" x1="254" y1="190" x2="282" y2="192" marker-end="url(#un-arrow)" />
+  <rect class="un-block" x="288" y="175" width="56" height="60" rx="8" />
+  <text class="un-res" x="316" y="209" text-anchor="middle">8&#178;</text>
+
+  <!-- bottleneck -->
+  <line class="un-flow" x1="344" y1="222" x2="366" y2="234" marker-end="url(#un-arrow)" />
+  <rect class="un-bn" x="372" y="220" width="96" height="42" rx="8" />
+  <text class="un-res" x="420" y="240" text-anchor="middle">4&#178;</text>
+  <text class="un-dim" x="420" y="254" text-anchor="middle">self-attention</text>
+
+  <!-- decoder -->
+  <line class="un-flow" x1="468" y1="234" x2="490" y2="222" marker-end="url(#un-arrow)" />
+  <rect class="un-block" x="496" y="175" width="56" height="60" rx="8" />
+  <text class="un-res" x="524" y="209" text-anchor="middle">8&#178;</text>
+
+  <line class="un-flow" x1="552" y1="192" x2="580" y2="190" marker-end="url(#un-arrow)" />
+  <rect class="un-block" x="586" y="116" width="56" height="88" rx="8" />
+  <text class="un-res" x="614" y="164" text-anchor="middle">16&#178;</text>
+
+  <line class="un-flow" x1="642" y1="152" x2="670" y2="150" marker-end="url(#un-arrow)" />
+  <rect class="un-block" x="676" y="50" width="56" height="120" rx="8" />
+  <text class="un-res" x="704" y="114" text-anchor="middle">32&#178;</text>
+
+  <!-- output: predicted noise -->
+  <line class="un-flow" x1="732" y1="110" x2="748" y2="110" marker-end="url(#un-arrow)" />
+  <g transform="translate(754,74)">
+    <g clip-path="url(#un-io)">
+      <rect width="40" height="72" fill="var(--dg-panel)" />
+      <rect width="40" height="72" filter="url(#un-grain)" />
+    </g>
+    <rect class="un-frame" width="40" height="72" rx="9" />
+  </g>
+  <text class="un-cap" x="762" y="164" text-anchor="middle">&#949;&#770;</text>
+
+  <!-- skip connections -->
+  <g class="un-skip" marker-end="url(#un-arrow)" color="var(--dg-accent)">
+    <line x1="166" y1="72" x2="674" y2="72" />
+    <line x1="256" y1="132" x2="584" y2="132" />
+    <line x1="346" y1="186" x2="494" y2="186" />
+  </g>
+  <text class="un-dim" x="420" y="64" text-anchor="middle" fill="var(--dg-accent)">skip connections &#8212; fine detail is handed straight across</text>
+
+  <!-- headings -->
+  <text class="un-cap" x="180" y="30" font-weight="600" fill="currentColor" opacity="0.75">shrink the picture, widen the channels</text>
+  <text class="un-cap" x="620" y="30" text-anchor="end" font-weight="600" fill="currentColor" opacity="0.75">rebuild it at full resolution</text>
+
+  <!-- timestep conditioning -->
+  <rect x="8" y="288" width="196" height="42" rx="9" fill="var(--dg-warm-soft)" stroke="var(--dg-warm)" stroke-opacity="0.7" stroke-width="1.2" />
+  <text class="un-cap" x="106" y="306" text-anchor="middle">t &#8594; sinusoidal embedding</text>
+  <text class="un-dim" x="106" y="322" text-anchor="middle">&#8594; small MLP</text>
+
+  <path class="un-time" d="M 204 309 H 730" />
+  <g class="un-time" marker-end="url(#un-arrow)" color="var(--dg-warm)">
+    <line x1="136" y1="288" x2="136" y2="176" />
+    <line x1="226" y1="309" x2="226" y2="210" />
+    <line x1="316" y1="309" x2="316" y2="241" />
+    <line x1="420" y1="309" x2="420" y2="268" />
+    <line x1="524" y1="309" x2="524" y2="241" />
+    <line x1="614" y1="309" x2="614" y2="210" />
+    <line x1="704" y1="309" x2="704" y2="176" />
+  </g>
+  <text class="un-dim" x="466" y="348" text-anchor="middle" fill="var(--dg-warm)">the same network handles every noise level, so it has to be told which one it is looking at</text>
+</svg>

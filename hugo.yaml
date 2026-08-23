@@ -1,39 +1,90 @@
 baseURL: "https://woletee.github.io/"
-languageCode: "en-us"
-title: "My Papers & Code"
+locale: "en-us"
+title: "Papers & Code"
 theme: ["PaperMod4"]
 
+enableRobotsTXT: true
+enableEmoji: true
+
+outputs:
+  home: ["HTML", "RSS", "JSON"]
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+    extensions:
+      passthrough:
+        enable: true
+        delimiters:
+          block: [["\\[", "\\]"], ["$$", "$$"]]
+          inline: [["\\(", "\\)"], ["$", "$"]]
+  highlight:
+    noClasses: false
+    lineNos: false
+    style: github-dark
+  tableOfContents:
+    startLevel: 2
+    endLevel: 3
+
 params:
-  author: "Your Name"
-  description: "Notes about research papers and programming"
+  author: "Wolete"
+  description: "Deep dives into research papers, with a growing library of explained diffusion model papers."
+  keywords: ["diffusion models", "generative models", "machine learning", "paper explained", "DDPM"]
   defaultTheme: auto
+  mainSections: ["diffusion", "posts"]
   ShowReadingTime: true
   ShowToc: true
+  TocOpen: true
   ShowCodeCopyButtons: true
   ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowWordCount: true
+  ShowRssButtonInSectionTermList: true
+  ShowShareButtons: true
+  displayFullLangName: true
 
   homeInfoParams:
-    Title: "Papers, programming, and things I’m learning"
-    Content: "I explain research papers and share practical code examples."
+    Title: "Papers, explained properly"
+    Content: >
+      I read research papers and rewrite them the way I wish they had been
+      explained to me: intuition first, pictures where they help, and code you
+      can actually run.
+
+
+      The current project is a growing **[library of diffusion model
+      papers](/diffusion/)** — from the 2020 paper that started it all to the
+      systems behind today's image and video generators.
 
   socialIcons:
     - name: github
-      url: "https://github.com/YOUR-GITHUB-USERNAME"
+      title: "GitHub"
+      url: "https://github.com/woletee"
+    - name: rss
+      title: "RSS"
+      url: "index.xml"
+
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    threshold: 0.3
+    minMatchCharLength: 2
+    keys: ["title", "summary", "content", "tags", "categories"]
 
 menu:
   main:
-    - name: Posts
-      url: /
+    - name: Diffusion Models
+      url: /diffusion/
       weight: 10
-    - name: Papers
-      url: /categories/papers/
+    - name: All Posts
+      url: /posts/
       weight: 20
-    - name: Programming
-      url: /categories/programming/
-      weight: 30
     - name: Tags
       url: /tags/
-      weight: 40
+      weight: 30
     - name: About
       url: /about/
+      weight: 40
+    - name: Search
+      url: /search/
       weight: 50

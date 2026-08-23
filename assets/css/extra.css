@@ -1,0 +1,200 @@
+/* ---------- Figures & diagrams ---------- */
+
+/* Diagrams are allowed to break out of the text column: they carry more
+   information per pixel than prose and get unreadable when squeezed. */
+.post-content figure.diagram,
+.md-content figure.diagram {
+    width: min(100vw - 2rem, 900px);
+    margin: 2.5rem 0 2.5rem 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+figure.diagram svg {
+    max-width: 100%;
+    height: auto;
+    color: var(--primary);
+}
+
+.post-content figure.diagram > figcaption,
+.md-content figure.diagram > figcaption {
+    max-width: 660px;
+    margin: 0.9rem auto 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.65;
+    color: var(--secondary);
+    text-align: center;
+}
+
+.post-content figure.diagram > figcaption strong {
+    color: var(--primary);
+}
+
+/* Diagram colour tokens, kept in one place so both themes stay readable. */
+:root {
+    --dg-accent: #2f6feb;
+    --dg-accent-soft: rgba(47, 111, 235, 0.14);
+    --dg-warm: #d9730d;
+    --dg-warm-soft: rgba(217, 115, 13, 0.16);
+    --dg-line: rgba(0, 0, 0, 0.45);
+    --dg-panel: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="dark"] {
+    --dg-accent: #7fb0ff;
+    --dg-accent-soft: rgba(127, 176, 255, 0.16);
+    --dg-warm: #f2a862;
+    --dg-warm-soft: rgba(242, 168, 98, 0.18);
+    --dg-line: rgba(255, 255, 255, 0.45);
+    --dg-panel: rgba(255, 255, 255, 0.07);
+}
+
+/* Fallback for when the theme toggle is disabled and no data-theme is set. */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --dg-accent: #7fb0ff;
+        --dg-accent-soft: rgba(127, 176, 255, 0.16);
+        --dg-warm: #f2a862;
+        --dg-warm-soft: rgba(242, 168, 98, 0.18);
+        --dg-line: rgba(255, 255, 255, 0.45);
+        --dg-panel: rgba(255, 255, 255, 0.07);
+    }
+}
+
+/* ---------- Paper header card ---------- */
+
+.paper-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.2rem;
+    margin: 1.5rem 0 2rem;
+    background: var(--code-bg);
+    font-size: 0.92rem;
+    line-height: 1.7;
+}
+
+.paper-card dl {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.35rem 1rem;
+    margin: 0;
+}
+
+.paper-card dt {
+    color: var(--secondary);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.paper-card dd {
+    margin: 0;
+}
+
+/* ---------- Callouts ---------- */
+
+.callout {
+    border-left: 3px solid var(--dg-accent);
+    background: var(--dg-accent-soft);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 0.9rem 1.1rem;
+    margin: 1.5rem 0;
+}
+
+.callout > :first-child {
+    margin-top: 0;
+}
+
+.callout > :last-child {
+    margin-bottom: 0;
+}
+
+.callout .callout-title {
+    display: block;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--dg-accent);
+    margin-bottom: 0.35rem;
+}
+
+.callout.warm {
+    border-left-color: var(--dg-warm);
+    background: var(--dg-warm-soft);
+}
+
+.callout.warm .callout-title {
+    color: var(--dg-warm);
+}
+
+/* ---------- Roadmap on the diffusion hub ---------- */
+
+.roadmap {
+    display: grid;
+    gap: 0.75rem;
+    margin: 1rem 0 2.5rem;
+    padding: 0;
+    list-style: none;
+}
+
+.roadmap li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.75rem 1rem;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.roadmap li.done {
+    border-left: 3px solid var(--dg-accent);
+}
+
+.roadmap .rm-title {
+    font-weight: 600;
+}
+
+.roadmap .rm-year {
+    color: var(--secondary);
+    font-variant-numeric: tabular-nums;
+    font-size: 0.85rem;
+}
+
+.roadmap .rm-note {
+    flex-basis: 100%;
+    color: var(--secondary);
+    font-size: 0.9rem;
+}
+
+.roadmap .rm-status {
+    margin-left: auto;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--secondary);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.1rem 0.55rem;
+    white-space: nowrap;
+}
+
+.roadmap li.done .rm-status {
+    color: var(--dg-accent);
+    border-color: var(--dg-accent);
+}
+
+/* ---------- Misc ---------- */
+
+.katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.25rem 0;
+}
+
+.post-content .notation table {
+    font-size: 0.92rem;
+}

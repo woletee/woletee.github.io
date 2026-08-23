@@ -1,0 +1,9 @@
+# Hugo build output — GitHub Actions rebuilds this on every push, so it should
+# not live in the repository.
+/public/
+/resources/_gen/
+.hugo_build.lock
+
+# OS / editor noise
+.DS_Store
+Thumbs.db

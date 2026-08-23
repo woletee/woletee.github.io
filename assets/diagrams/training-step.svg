@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 352" role="img"
+    aria-label="One DDPM training step: take a real image and fresh noise, blend them according to a randomly chosen timestep, ask the network to name the noise it sees, and score the guess against the noise you actually used.">
+  <defs>
+    <clipPath id="ts-panel">
+      <rect x="0" y="0" width="92" height="92" rx="9" />
+    </clipPath>
+    <filter id="ts-grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="1.05" numOctaves="4" stitchTiles="stitch" seed="3" />
+      <feColorMatrix type="saturate" values="0" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0" intercept="1" />
+      </feComponentTransfer>
+    </filter>
+    <marker id="ts-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" />
+    </marker>
+  </defs>
+
+  <style>
+    .ts-cap  { font: 500 12px ui-sans-serif, system-ui, sans-serif; fill: currentColor; }
+    .ts-dim  { font: 400 11px ui-sans-serif, system-ui, sans-serif; fill: currentColor; fill-opacity: 0.6; }
+    .ts-box  { fill: var(--dg-panel); stroke: var(--dg-line); stroke-opacity: 0.4; }
+    .ts-frame{ fill: none; stroke: var(--dg-line); stroke-opacity: 0.35; }
+    .ts-flow { fill: none; stroke: currentColor; stroke-opacity: 0.55; stroke-width: 1.6; }
+    .ts-math { font: 500 13px ui-serif, Georgia, serif; fill: currentColor; }
+  </style>
+
+  <!-- real image x0 -->
+  <g transform="translate(24,36)">
+    <g clip-path="url(#ts-panel)">
+      <rect width="92" height="92" fill="var(--dg-panel)" />
+      <circle cx="28" cy="28" r="12" fill="var(--dg-warm)" />
+      <path d="M -6 76 L 26 40 L 48 64 L 64 46 L 98 76 Z" fill="var(--dg-accent)" />
+      <rect x="-2" y="74" width="96" height="20" fill="var(--dg-accent)" opacity="0.55" />
+    </g>
+    <rect class="ts-frame" width="92" height="92" rx="9" />
+  </g>
+  <text class="ts-cap" x="70" y="146" text-anchor="middle">a real image x<tspan font-size="9">0</tspan></text>
+  <text class="ts-dim" x="70" y="162" text-anchor="middle">from your dataset</text>
+
+  <!-- noise eps -->
+  <g transform="translate(24,182)">
+    <g clip-path="url(#ts-panel)">
+      <rect width="92" height="92" fill="var(--dg-panel)" />
+      <rect width="92" height="92" filter="url(#ts-grain)" />
+    </g>
+    <rect class="ts-frame" width="92" height="92" rx="9" />
+  </g>
+  <text class="ts-cap" x="70" y="292" text-anchor="middle">fresh noise &#949;</text>
+  <text class="ts-dim" x="70" y="308" text-anchor="middle">drawn from N(0, I)</text>
+
+  <!-- flows into the mixer -->
+  <g class="ts-flow" marker-end="url(#ts-arrow)">
+    <path d="M 120 82 C 142 82, 146 118, 152 138" />
+    <path d="M 120 228 C 142 228, 146 192, 152 172" />
+  </g>
+
+  <!-- mixer -->
+  <circle cx="170" cy="155" r="17" fill="var(--dg-warm-soft)" stroke="var(--dg-warm)" stroke-width="1.4" />
+  <text class="ts-math" x="170" y="160" text-anchor="middle" fill="var(--dg-warm)">+</text>
+  <text class="ts-dim" x="170" y="196" text-anchor="middle">blend, using</text>
+  <text class="ts-dim" x="170" y="210" text-anchor="middle">the recipe for t</text>
+
+  <!-- xt -->
+  <line class="ts-flow" x1="189" y1="155" x2="216" y2="155" marker-end="url(#ts-arrow)" />
+  <g transform="translate(222,109)">
+    <g clip-path="url(#ts-panel)">
+      <rect width="92" height="92" fill="var(--dg-panel)" />
+      <g opacity="0.5">
+        <circle cx="28" cy="28" r="12" fill="var(--dg-warm)" />
+        <path d="M -6 76 L 26 40 L 48 64 L 64 46 L 98 76 Z" fill="var(--dg-accent)" />
+        <rect x="-2" y="74" width="96" height="20" fill="var(--dg-accent)" opacity="0.55" />
+      </g>
+      <rect width="92" height="92" filter="url(#ts-grain)" opacity="0.82" />
+    </g>
+    <rect class="ts-frame" width="92" height="92" rx="9" />
+  </g>
+  <text class="ts-cap" x="268" y="220" text-anchor="middle">x<tspan font-size="9">t</tspan> &#8212; the noisy version</text>
+
+  <!-- network -->
+  <line class="ts-flow" x1="318" y1="155" x2="332" y2="155" marker-end="url(#ts-arrow)" />
+  <rect class="ts-box" x="338" y="115" width="128" height="80" rx="10" />
+  <text class="ts-cap" x="402" y="147" text-anchor="middle" font-weight="600">&#949;<tspan font-size="9">&#952;</tspan>(x<tspan font-size="9">t</tspan>, t)</text>
+  <text class="ts-dim" x="402" y="167" text-anchor="middle">a U-Net</text>
+  <text class="ts-dim" x="402" y="181" text-anchor="middle">&#8220;which noise is this?&#8221;</text>
+
+  <!-- timestep input -->
+  <rect class="ts-box" x="330" y="248" width="144" height="34" rx="8" />
+  <text class="ts-cap" x="402" y="269" text-anchor="middle">t ~ Uniform{1, &#8230;, T}</text>
+  <line class="ts-flow" x1="402" y1="246" x2="402" y2="201" marker-end="url(#ts-arrow)" />
+  <path class="ts-flow" stroke-dasharray="4 4" d="M 330 258 C 250 258, 210 230, 176 178" marker-end="url(#ts-arrow)" />
+
+  <!-- predicted noise -->
+  <line class="ts-flow" x1="470" y1="155" x2="494" y2="155" marker-end="url(#ts-arrow)" />
+  <g transform="translate(500,109)">
+    <g clip-path="url(#ts-panel)">
+      <rect width="92" height="92" fill="var(--dg-panel)" />
+      <rect width="92" height="92" filter="url(#ts-grain)" opacity="0.9" />
+    </g>
+    <rect class="ts-frame" width="92" height="92" rx="9" />
+  </g>
+  <text class="ts-cap" x="546" y="220" text-anchor="middle">&#949;&#770; &#8212; the guess</text>
+
+  <!-- loss -->
+  <line class="ts-flow" x1="596" y1="155" x2="616" y2="155" marker-end="url(#ts-arrow)" />
+  <rect class="ts-box" x="622" y="118" width="212" height="74" rx="10" stroke="var(--dg-accent)" stroke-opacity="0.7" />
+  <text class="ts-math" x="728" y="150" text-anchor="middle" font-size="16">&#8214; &#949; &#8722; &#949;&#770; &#8214;&#178;</text>
+  <text class="ts-dim" x="728" y="172" text-anchor="middle">plain mean-squared error &#8212; that is the whole loss</text>
+
+  <!-- eps supplies the answer key -->
+  <path class="ts-flow" stroke-dasharray="5 5" stroke="var(--dg-accent)" d="M 70 278 V 330 H 728 V 196" marker-end="url(#ts-arrow)" />
+  <text class="ts-dim" x="400" y="324" text-anchor="middle" fill="var(--dg-accent)">the noise we actually used &#8212; the answer key</text>
+</svg>
