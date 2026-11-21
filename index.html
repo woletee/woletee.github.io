@@ -22,7 +22,7 @@
     --line: #d9cfbb;
   }
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--olive); color: var(--ink); font-family: Caveat, cursive; font-size: 20px; }
+  body { margin: 0; background: var(--olive); color: var(--ink); font-family: Caveat, cursive; font-size: 20px; font-weight: 700; }
   a { color: inherit; }
   .page { max-width: 1280px; margin: 0 auto; padding: 22px; }
   .sheet { background: var(--cream); border-radius: 4px; box-shadow: 0 10px 30px #0003; overflow: hidden; }
@@ -33,7 +33,7 @@
   nav.top ul.right { justify-content: flex-end; }
   nav.top a { text-decoration: none; padding: 10px 0; display: inline-block; }
   nav.top a:hover { text-decoration: underline; text-underline-offset: 4px; }
-  .logo { font-family: "Pinyon Script", cursive; font-size: 54px; line-height: 1; text-decoration: none; padding: 0 12px; }
+  .logo { font-weight: 400; font-family: "Pinyon Script", cursive; font-size: 54px; line-height: 1; text-decoration: none; padding: 0 12px; }
 
   /* folder */
   .stage { position: relative; margin: 18px 40px 40px; height: 780px; }
@@ -62,7 +62,7 @@
   .f.full { grid-column: span 2; }
   .f + .f:not(.full):nth-child(even) { border-left: 1px solid var(--ink); }
   .f label { display: block; font-family: Caveat, cursive; font-size: 16px; color: var(--soft); }
-  .f div { font-family: Caveat, cursive; font-size: 23px; line-height: 1.05; color: var(--ink); }
+  .f div { font-family: Caveat, cursive; font-size: 23px; line-height: 1.05; color: var(--ink); font-weight: 500; }
   .stamp { position: absolute; right: -14px; bottom: -18px; width: 92px; height: 92px; border: 2.5px solid var(--pen); border-radius: 50%; color: var(--pen); display: flex; align-items: center; justify-content: center; text-align: center; font-family: Caveat, cursive; font-size: 15px; line-height: 1.1; transform: rotate(-14deg); opacity: .85; }
   .clip { position: absolute; top: -26px; width: 22px; height: 64px; border: 3px solid #9aa0a6; border-radius: 12px; }
 
@@ -95,10 +95,10 @@
   .post h3 { margin: 0 0 6px; font-size: 28px; }
   .post p { margin: 0; color: #3c3a36; font-size: 21px; line-height: 1.2; }
   footer { padding: 30px 40px 36px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; border-top: 1px dashed var(--line); font-size: 22px; }
-  footer .sig { font-family: "Pinyon Script", cursive; font-size: 34px; }
+  footer .sig { font-weight: 400; font-family: "Pinyon Script", cursive; font-size: 34px; }
   footer nav { display: flex; gap: 22px; flex-wrap: wrap; align-items: center; }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1240px) {
     nav.top { grid-template-columns: 1fr; text-align: center; }
     nav.top ul, nav.top ul.right { justify-content: center; flex-wrap: wrap; gap: 18px; }
     .logo { order: -1; }
