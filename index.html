@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marya · AI experiments and tools</title>
+<meta name="description" content="Marya's portfolio: open-source ML tools, AI experiments and writing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Courier+Prime&family=Inter:wght@400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --olive: #8a9a4a;
+    --olive-dark: #5f6b2c;
+    --cream: #f3ecdc;
+    --paper: #fbf7ee;
+    --pink: #e7a0b4;
+    --pink-dark: #c97b92;
+    --blue-card: #c9dcef;
+    --ink: #1f1d1a;
+    --soft: #6e6a62;
+    --pen: #2747c9;
+    --line: #d9cfbb;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--olive); color: var(--ink); font-family: Inter, system-ui, sans-serif; }
+  a { color: inherit; }
+  .page { max-width: 1280px; margin: 0 auto; padding: 22px; }
+  .sheet { background: var(--cream); border-radius: 4px; box-shadow: 0 10px 30px #0003; overflow: hidden; }
+
+  /* nav */
+  nav.top { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 22px 40px 6px; gap: 12px; }
+  nav.top ul { list-style: none; display: flex; gap: 28px; margin: 0; padding: 0; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+  nav.top ul.right { justify-content: flex-end; }
+  nav.top a { text-decoration: none; padding: 10px 0; display: inline-block; }
+  nav.top a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .logo { font-family: "Pinyon Script", cursive; font-size: 54px; line-height: 1; text-decoration: none; padding: 0 12px; }
+
+  /* folder */
+  .stage { position: relative; margin: 18px 40px 40px; height: 680px; }
+  .folder { position: absolute; inset: 40px 0 0 0; background: var(--pink); border-radius: 26px; box-shadow: inset 0 0 0 1px #0000000d; }
+  .folder::before { content: ""; position: absolute; top: -40px; left: 0; width: 340px; height: 60px; background: var(--pink); border-radius: 26px 26px 0 0; }
+  .folder::after { content: ""; position: absolute; right: 60px; bottom: 0; width: 220px; height: 0; }
+  .notch { position: absolute; left: -10px; width: 20px; height: 70px; background: var(--cream); border-radius: 10px; }
+
+  .item { position: absolute; }
+  .shadow { box-shadow: 0 8px 18px #00000033, 0 2px 4px #0002; }
+
+  /* polaroid-style project tiles */
+  .polaroid { background: #fff; padding: 12px 12px 44px; text-decoration: none; display: block; transition: transform .2s; }
+  .polaroid:hover, .polaroid:focus-visible { transform: rotate(0deg) scale(1.03) !important; z-index: 20; }
+  .polaroid .shot { background: #1c1f24; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .polaroid .cap { position: absolute; left: 14px; right: 14px; bottom: 10px; font-family: Caveat, cursive; font-size: 22px; color: var(--ink); }
+
+  /* the case-file card */
+  .card { background: var(--paper); width: 430px; padding: 26px 26px 22px 46px; background-image: repeating-linear-gradient(transparent 0 31px, #e9e0cc 31px 32px); }
+  .card .holes { position: absolute; left: 14px; top: 40px; bottom: 40px; display: flex; flex-direction: column; justify-content: space-between; }
+  .card .holes i { width: 12px; height: 12px; border-radius: 50%; background: var(--cream); box-shadow: inset 1px 1px 2px #0003; }
+  .card h1 { margin: 0 0 18px; font-size: 13px; font-weight: 700; letter-spacing: .02em; line-height: 1.25; text-transform: uppercase; }
+  .card h1 span { display: block; font-family: "Pinyon Script", cursive; text-transform: none; font-size: 40px; font-weight: 400; margin-top: 4px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--ink); }
+  .f { border-bottom: 1px solid var(--ink); padding: 4px 6px 6px; min-height: 52px; }
+  .f.full { grid-column: span 2; }
+  .f + .f:not(.full):nth-child(even) { border-left: 1px solid var(--ink); }
+  .f label { display: block; font-family: "Courier Prime", monospace; font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--soft); }
+  .f div { font-family: Caveat, cursive; font-size: 23px; line-height: 1.05; color: var(--ink); }
+  .stamp { position: absolute; right: 20px; bottom: 18px; width: 92px; height: 92px; border: 2.5px solid var(--pen); border-radius: 50%; color: var(--pen); display: flex; align-items: center; justify-content: center; text-align: center; font-family: "Courier Prime", monospace; font-size: 10px; line-height: 1.2; transform: rotate(-14deg); opacity: .85; }
+  .clip { position: absolute; top: -26px; width: 22px; height: 64px; border: 3px solid #9aa0a6; border-radius: 12px; }
+
+  .note { padding: 18px 18px 22px; font-size: 13px; line-height: 1.45; }
+  .note h3 { margin: 0 0 8px; font-family: Caveat, cursive; font-size: 26px; font-weight: 700; }
+  .note p { margin: 0; }
+  .ticket { background: #eef1d9; border: 1px dashed var(--olive-dark); padding: 14px 16px; font-family: "Courier Prime", monospace; font-size: 12px; text-decoration: none; display: block; }
+  .ticket b { display: block; font-family: Inter, sans-serif; font-size: 15px; margin-bottom: 4px; }
+  .lock { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--olive-dark); }
+  .star { width: 34px; height: 34px; }
+  .tape { position: absolute; width: 90px; height: 24px; background: #f4e7a8cc; transform: rotate(-6deg); }
+
+  /* below the fold */
+  section.block { padding: 56px 40px; border-top: 1px dashed var(--line); }
+  section.block h2 { margin: 0 0 8px; font-family: "Pinyon Script", cursive; font-weight: 400; font-size: 52px; }
+  section.block .lead { margin: 0 0 30px; color: var(--soft); max-width: 640px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 22px; }
+  .index { background: var(--paper); padding: 20px 20px 18px; border-top: 6px solid var(--pink); box-shadow: 0 4px 10px #0001; display: flex; flex-direction: column; gap: 10px; text-decoration: none; min-height: 200px; }
+  .index:nth-child(3n+2) { border-top-color: var(--olive); }
+  .index:nth-child(3n) { border-top-color: #9cb6d6; }
+  .index h3 { margin: 0; font-size: 19px; }
+  .index p { margin: 0; color: #3c3a36; font-size: 14.5px; line-height: 1.5; }
+  .index .meta { margin-top: auto; display: flex; flex-wrap: wrap; gap: 6px; font-family: "Courier Prime", monospace; font-size: 12px; }
+  .index .meta span { border: 1px solid var(--ink); padding: 2px 7px; border-radius: 99px; }
+  .index .meta .pv { background: var(--ink); color: var(--cream); }
+  a.index:hover h3 { text-decoration: underline; text-underline-offset: 4px; }
+  .writing { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; }
+  .post { display: flex; gap: 18px; align-items: flex-start; background: var(--paper); padding: 20px; text-decoration: none; box-shadow: 0 4px 10px #0001; }
+  .post .date { font-family: "Courier Prime", monospace; font-size: 12px; color: var(--soft); white-space: nowrap; padding-top: 4px; }
+  .post h3 { margin: 0 0 6px; font-size: 19px; }
+  .post p { margin: 0; color: #3c3a36; font-size: 14.5px; line-height: 1.5; }
+  footer { padding: 30px 40px 36px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; border-top: 1px dashed var(--line); font-size: 14px; }
+  footer .sig { font-family: "Pinyon Script", cursive; font-size: 34px; }
+  footer nav { display: flex; gap: 22px; flex-wrap: wrap; align-items: center; }
+
+  @media (max-width: 1000px) {
+    nav.top { grid-template-columns: 1fr; text-align: center; }
+    nav.top ul, nav.top ul.right { justify-content: center; flex-wrap: wrap; gap: 18px; }
+    .logo { order: -1; }
+    .stage { height: auto; margin: 18px 16px 30px; padding: 70px 18px 24px; display: flex; flex-direction: column; gap: 22px; align-items: center; }
+    .folder { inset: 40px 0 0 0; }
+    .folder::before { width: 60%; }
+    .item { position: relative; left: auto !important; top: auto !important; right: auto !important; transform: none !important; }
+    .item.deco { display: none; }
+    .card { width: 100%; max-width: 460px; order: -1; }
+    section.block { padding: 44px 20px; }
+    footer { padding: 26px 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .polaroid { transition: none; } }
+</style>
+</head>
+<body>
+<div class="page">
+<div class="sheet">
+
+  <nav class="top" aria-label="Main">
+    <ul>
+      <li><a href="#top">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Selected work</a></li>
+    </ul>
+    <a class="logo" href="#top" aria-label="Marya, home">Marya</a>
+    <ul class="right">
+      <li><a href="https://woletee.github.io/diffusion-papers-/">Blog</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="stage" id="top">
+    <div class="folder" aria-hidden="true"><span class="notch" style="top: 120px"></span><span class="notch" style="top: 420px"></span></div>
+
+    <!-- blog post as a polaroid: forgetting curves -->
+    <a class="item polaroid shadow" href="https://woletee.github.io/diffusion-papers-/can-ai-learn-to-sleep/" style="left: 60px; top: 90px; width: 300px; transform: rotate(-4deg); z-index: 3;">
+      <div class="shot" style="height: 250px; background: #fbf7ee;">
+        <svg viewBox="0 0 260 210" width="100%" height="100%" role="img" aria-label="Chart: old-fact recall crashes, then recovers with sleep">
+          <g stroke="#e3dccb"><line x1="20" x2="250" y1="40" y2="40"/><line x1="20" x2="250" y1="100" y2="100"/><line x1="20" x2="250" y1="160" y2="160"/></g>
+          <polyline fill="none" stroke="#1f1d1a" stroke-width="2" points="20,25 50,110 70,178 100,182 130,180 160,184 190,178 220,182 250,182"/>
+          <polyline fill="none" stroke="#2f8a4f" stroke-width="4" points="20,25 50,105 70,170 100,160 130,150 160,120 190,100 220,92 250,80"/>
+          <text x="140" y="74" font-family="Caveat" font-size="18" fill="#2f8a4f">with sleep</text>
+          <text x="150" y="200" font-family="Caveat" font-size="18" fill="#1f1d1a">no sleep</text>
+        </svg>
+      </div>
+      <span class="cap">Can AI learn to sleep? ✎ new post</span>
+    </a>
+
+    <!-- blue note behind the card -->
+    <div class="item note shadow" style="left: 910px; top: 500px; width: 240px; background: var(--blue-card); transform: rotate(3deg); z-index: 5;">
+      <h3>Currently</h3>
+      <p>Designing <b>Paper to Code</b>: papers you can read, see as one picture, and run in a few minutes.</p>
+    </div>
+
+    <!-- the case file -->
+    <article class="item card shadow" id="about" style="left: 410px; top: 80px; transform: rotate(-1.5deg); z-index: 5;" aria-labelledby="hello">
+      <div class="holes" aria-hidden="true"><i></i><i></i><i></i></div>
+      <h1 id="hello">Welcome<br>to the world of<span>Marya</span></h1>
+      <div class="grid">
+        <div class="f full"><label>Name</label><div>Marya</div></div>
+        <div class="f full"><label>Area of expertise</label><div>Diffusion models, medical image translation, evaluating generative models</div></div>
+        <div class="f full"><label>Education</label><div>AI Graduate School, GIST</div></div>
+        <div class="f"><label>Based in</label><div>South Korea</div></div>
+        <div class="f"><label>Tools</label><div>PyTorch · MONAI</div></div>
+        <div class="f full"><label>Currently asking</label><div>Can AI learn to sleep?</div></div>
+      </div>
+      <div class="stamp" aria-hidden="true">OPEN<br>SOURCE<br>★ 2026 ★</div>
+    </article>
+
+    <!-- torchinfo-viz polaroid with paperclip -->
+    <a class="item polaroid shadow" href="https://github.com/woletee/torchinfo-viz" style="left: 820px; top: 70px; width: 250px; transform: rotate(5deg); z-index: 6;">
+      <span class="clip" aria-hidden="true" style="left: 110px;"></span>
+      <div class="shot" style="height: 170px; background: #f6f2e8; padding: 10px;">
+        <svg viewBox="0 0 220 150" width="100%" height="100%" role="img" aria-label="Treemap of a model's layers">
+          <rect x="2" y="2" width="120" height="146" fill="#e7a0b4"/><rect x="126" y="2" width="92" height="70" fill="#8a9a4a"/>
+          <rect x="126" y="76" width="44" height="72" fill="#9cb6d6"/><rect x="174" y="76" width="44" height="72" fill="#f4d58d"/>
+          <rect x="2" y="100" width="120" height="48" fill="#c97b92"/>
+          <text x="10" y="22" font-family="Courier Prime" font-size="11" fill="#1f1d1a">encoder</text>
+          <text x="132" y="20" font-family="Courier Prime" font-size="11" fill="#fff">decoder</text>
+        </svg>
+      </div>
+      <span class="cap">torchinfo-viz · see your model</span>
+    </a>
+
+    <!-- imgverify as a pass ticket -->
+    <div class="item ticket shadow" style="left: 90px; top: 430px; width: 270px; transform: rotate(-7deg); z-index: 4;">
+      <b>imgverify</b>
+      request → yes/no checks → verify → retry<br>
+      <span style="font-family: Caveat; font-size: 30px; color: #2f8a4f;">PASS ✓</span>
+      <div class="lock">private · coming soon</div>
+    </div>
+
+    <!-- diffeval as an olive envelope -->
+    <a class="item note shadow" href="https://github.com/woletee/diffeval" style="left: 880px; top: 330px; width: 230px; background: #9aab55; color: #1f2410; transform: rotate(-6deg); z-index: 4; text-decoration: none;">
+      <h3>diffeval</h3>
+      <p>Is your image model actually getting better? An evaluation harness for text-to-image diffusion.</p>
+    </a>
+
+    <!-- stack of receipts: private libraries -->
+    <div class="item ticket shadow" style="left: 640px; top: 530px; width: 240px; transform: rotate(4deg); z-index: 7; background: var(--paper);">
+      <b>mlbun</b>
+      GPU-aware Python stacks that actually run on your machine.
+      <div class="lock">private · coming soon</div>
+    </div>
+    <div class="item ticket shadow" style="left: 420px; top: 560px; width: 220px; transform: rotate(-3deg); z-index: 6; background: #f7e3e9;">
+      <b>rewind</b>
+      Every agent action saved with its undo, before it runs.
+      <div class="lock">private · coming soon</div>
+    </div>
+
+    <!-- decorations -->
+    <svg class="item deco star" style="left: 40px; top: 60px; z-index: 8;" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 0 L24 16 L40 20 L24 24 L20 40 L16 24 L0 20 L16 16 Z" fill="#b9bcc2" stroke="#7d8189"/></svg>
+    <svg class="item deco star" style="left: 1110px; top: 250px; z-index: 8; width: 44px; height: 44px;" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 0 L24 16 L40 20 L24 24 L20 40 L16 24 L0 20 L16 16 Z" fill="#b9bcc2" stroke="#7d8189"/></svg>
+    <svg class="item deco star" style="left: 1080px; top: 300px; z-index: 8; width: 26px; height: 26px;" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 0 L24 16 L40 20 L24 24 L20 40 L16 24 L0 20 L16 16 Z" fill="#d4d6da" stroke="#7d8189"/></svg>
+    <span class="item deco tape" style="left: 160px; top: 78px; z-index: 9;" aria-hidden="true"></span>
+    <svg class="item deco" style="left: 30px; top: 360px; width: 70px; height: 70px; z-index: 8;" viewBox="0 0 60 60" aria-hidden="true"><g fill="#fbf7ee" stroke="#c9bfa8"><circle cx="30" cy="14" r="11"/><circle cx="46" cy="28" r="11"/><circle cx="40" cy="46" r="11"/><circle cx="20" cy="46" r="11"/><circle cx="14" cy="28" r="11"/></g><circle cx="30" cy="31" r="7" fill="#f4d58d"/></svg>
+  </div>
+
+  <section class="block" id="work" aria-labelledby="work-h">
+    <h2 id="work-h">Selected work</h2>
+    <p class="lead">Tools I've built this year, mostly for making, testing and understanding generative models.</p>
+    <div class="cards">
+      <a class="index" href="https://github.com/woletee/diffeval">
+        <h3>diffeval</h3>
+        <p>An evaluation harness for text-to-image diffusion models: one place to measure whether a model really improved.</p>
+        <div class="meta"><span>Python</span><span>diffusion</span><span>open source</span></div>
+      </a>
+      <a class="index" href="https://github.com/woletee/torchinfo-viz">
+        <h3>torchinfo-viz</h3>
+        <p>torchinfo with interactive model reports: graph, flow, treemap and table views of any PyTorch model.</p>
+        <div class="meta"><span>PyTorch</span><span>visualization</span><span>open source</span></div>
+      </a>
+      <div class="index">
+        <h3>imgverify</h3>
+        <p>Tests for generated images: turn a request into yes/no checks, verify each image, retry until it passes.</p>
+        <div class="meta"><span>MCP server</span><span>Python</span><span class="pv">private</span></div>
+      </div>
+      <div class="index">
+        <h3>medtranslate</h3>
+        <p>Model-agnostic 3D medical image-to-image translation, such as MRI to CT, with PyTorch and MONAI.</p>
+        <div class="meta"><span>MONAI</span><span>medical imaging</span><span class="pv">private</span></div>
+      </div>
+      <div class="index">
+        <h3>mlbun</h3>
+        <p>Resolves GPU-aware Python stacks that actually run on your machine: driver, CUDA and torch versions that fit together.</p>
+        <div class="meta"><span>CUDA</span><span>packaging</span><span class="pv">private</span></div>
+      </div>
+      <div class="index">
+        <h3>rewind</h3>
+        <p>Agent rollback: every action is recorded with its undo recipe before it runs, so nothing irreversible happens.</p>
+        <div class="meta"><span>agents</span><span>safety</span><span class="pv">private</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="writing" aria-labelledby="writing-h">
+    <h2 id="writing-h">Writing &amp; experiments</h2>
+    <p class="lead">Small experiments that test an idea from a paper, written up so anyone can follow and rerun them.</p>
+    <div class="writing">
+      <a class="post" href="https://woletee.github.io/diffusion-papers-/can-ai-learn-to-sleep/">
+        <span class="date">Nov 2026</span>
+        <div><h3>Can AI learn to sleep?</h3><p>What the brain's memory replay teaches us about catastrophic forgetting, tested on GPT-2 with three seeds.</p></div>
+      </a>
+      <a class="post" href="https://woletee.github.io/diffusion-papers-/start/">
+        <span class="date">Play</span>
+        <div><h3>Press start</h3><p>A pixel-art introduction: meet the player and see the quest log.</p></div>
+      </a>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <span class="sig">Marya</span>
+    <nav aria-label="Contact">
+      <a href="https://github.com/woletee">GitHub</a>
+      <a href="https://woletee.github.io/diffusion-papers-/">Blog</a>
+      <a href="https://woletee.github.io/diffusion-papers-/index.xml">RSS</a>
+    </nav>
+  </footer>
+
+</div>
+</div>
+</body>
+</html>
